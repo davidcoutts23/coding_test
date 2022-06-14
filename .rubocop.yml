@@ -4,3 +4,5 @@ Style/Documentation:
 Metrics/BlockLength:
   Exclude:
     - 'spec/*.rb'
+    - 'spec/commands/*.rb'
+    - 'spec/helpers/*.rb'

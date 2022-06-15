@@ -16,7 +16,7 @@ class PlaceCommand
     process_input_for(input)
     validate_cardinal_direction
     validate_position
-    place_robot
+    return place_robot
   rescue StandardError => e
     PlaceCommandInputProcessor::InputValidationError
     Orientation::NonExistentCardinalDirectionError
@@ -47,7 +47,7 @@ class PlaceCommand
 
   def place_robot
     puts 'robot placed'
-    @robot = Robot.new(
+    Robot.new(
       position: Position.new(x_coordinate: place_command_arguments.x_coordinate,
                              y_coordinate: place_command_arguments.y_coordinate),
       orientation: Orientation.new(cardinal_direction: place_command_arguments.cardinal_direction)

@@ -18,8 +18,6 @@ class PlaceCommandInputProcessor
     )
   end
 
-  
-
   private
 
   attr_accessor :x_coordinate, :y_coordinate, :cardinal_direction, :input_array

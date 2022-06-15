@@ -7,6 +7,7 @@ require 'position'
 
 RSpec.describe Tabletop do
   subject(:tabletop) { Tabletop.new(x_units: 5, y_units: 5) }
+  let(:validate_position) { tabletop.validate_position(position) }
 
   let(:x_coordinate) { 3 }
   let(:y_coordinate) { 0 }
@@ -19,29 +20,41 @@ RSpec.describe Tabletop do
   end
 
   describe '.position_valid?' do
-    it 'returns true for a valid position on the tabletop' do
-      expect(tabletop.position_valid?(position)).to be(true)
+    it 'returns with no error raised' do
+      expect { validate_position }.to_not raise_error(
+        Tabletop::NonExistentTabletopPositionError,
+        'Error: Position does not exist on the tabletop.'
+      )
     end
 
     context 'an x coordinate provided is out of range' do
       let(:x_coordinate) { 5 }
-      it 'returns false for an ivalid position on the tabletop' do
-        expect(tabletop.position_valid?(position)).to be(false)
+      it 'raises an error' do
+        expect { validate_position }.to raise_error(
+          Tabletop::NonExistentTabletopPositionError,
+          'Error: Position does not exist on the tabletop.'
+        )
       end
     end
 
     context 'a y coordinate provided is out of range' do
       let(:y_coordinate) { 5 }
-      it 'returns false for an ivalid position on the tabletop' do
-        expect(tabletop.position_valid?(position)).to be(false)
+      it 'raises an error' do
+        expect { validate_position }.to raise_error(
+          Tabletop::NonExistentTabletopPositionError,
+          'Error: Position does not exist on the tabletop.'
+        )
       end
     end
 
     context 'both x and y coordinates provided are out of range' do
       let(:x_coordinate) { 5 }
       let(:y_coordinate) { 5 }
-      it 'returns false for an ivalid position on the tabletop' do
-        expect(tabletop.position_valid?(position)).to be(false)
+      it 'raises an error' do
+        expect { validate_position }.to raise_error(
+          Tabletop::NonExistentTabletopPositionError,
+          'Error: Position does not exist on the tabletop.'
+        )
       end
     end
   end

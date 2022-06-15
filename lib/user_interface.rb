@@ -9,7 +9,7 @@ module UserInterface
     loop do
       print 'Input command: '
       input = gets
-      simulation_orchestrator.command_for(input)
+      simulation_orchestrator.command_for(input.strip)
     end
   end
 end

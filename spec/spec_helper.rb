@@ -6,7 +6,8 @@ require 'orientation'
 require 'tabletop'
 require './lib/commands/place_command_input_processor'
 require './lib/commands/place_command_arguments'
-require 'robot'
+require './lib/robot'
+require './lib/robot_actions/movement'
 
 # frozen_string_literal: true
 

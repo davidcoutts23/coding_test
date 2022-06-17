@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'position'
+require './lib/position'
 
 class Movement
   def move(position:, orientation:)

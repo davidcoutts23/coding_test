@@ -3,7 +3,7 @@
 class Orientation
   class NonExistentCardinalDirectionError < StandardError; end
 
-  def initialize(cardinal_direction)
+  def initialize(cardinal_direction:)
     @cardinal_direction = cardinal_direction
   end
 

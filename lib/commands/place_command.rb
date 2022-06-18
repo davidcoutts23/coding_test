@@ -50,7 +50,7 @@ class PlaceCommand
     Robot.new(
       position: Position.new(x_coordinate: place_command_arguments.x_coordinate,
                              y_coordinate: place_command_arguments.y_coordinate),
-      orientation: Orientation.new(place_command_arguments.cardinal_direction)
+      orientation: Orientation.new(cardinal_direction: place_command_arguments.cardinal_direction)
     )
   end
 end

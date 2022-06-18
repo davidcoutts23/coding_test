@@ -4,12 +4,14 @@ require './lib/commands/place_command'
 require './lib/commands/move_command'
 require './lib/commands/place_command_input_processor'
 require './lib/commands/place_command_arguments'
+require './lib/commands/rotate_command'
 require './lib/helpers/validate_integer'
 require 'orientation'
 require 'tabletop'
 require './lib/robot'
 require './lib/robot_actions/movement'
 require 'pry'
+
 
 # frozen_string_literal: true
 

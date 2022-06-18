@@ -21,7 +21,7 @@ class SimulationOrchestrator
       move = MoveCommand.new(tabletop:tabletop, robot:robot)
       move.perform
       puts move.result
-    when /LEFT/ || /RIGHT/
+    when /LEFT/, /RIGHT/
       rotate = RotateCommand.new(tabletop:tabletop, robot:robot)
       rotate.perform(input)
       puts rotate.result

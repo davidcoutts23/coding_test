@@ -16,7 +16,7 @@ class PlaceCommand
     process_input_for(input)
     validate_cardinal_direction
     validate_position
-    return place_robot
+    place_robot
   rescue StandardError => e
     PlaceCommandInputProcessor::InputValidationError
     Orientation::NonExistentCardinalDirectionError

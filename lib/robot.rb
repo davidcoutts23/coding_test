@@ -9,8 +9,8 @@ class Robot
     @movement = Movement.new
   end
 
-  def move
-    @position = movement.move(position:, orientation:)
+  def calculate_move
+    movement.move(position:, orientation:)
   end
 
   # TODO:  Should be using attr writer for this but was having problems with the spec.

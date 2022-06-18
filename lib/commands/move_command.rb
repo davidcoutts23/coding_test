@@ -11,7 +11,7 @@ class MoveCommand
   attr_reader :response
 
   def perform
-    @new_position = robot.move
+    @new_position = robot.calculate_move
     begin
       tabletop.validate_position(new_position)
       robot.set_position(new_position)

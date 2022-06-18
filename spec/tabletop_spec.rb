@@ -67,7 +67,6 @@ RSpec.describe Tabletop do
       end
     end
 
-
     context 'both x and y coordinates provided are out of range' do
       let(:x_coordinate) { 5 }
       let(:y_coordinate) { 5 }

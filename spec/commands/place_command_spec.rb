@@ -21,16 +21,13 @@ RSpec.describe PlaceCommand do
 
   let(:position) do
     instance_double(
-      Position,
-      x_coordinate: place_command_arguments.x_coordinate,
-      y_coordinate: place_command_arguments.y_coordinate
+      Position
     )
   end
 
   let(:orientation) do
     instance_double(
-      Orientation,
-      cardinal_direction: place_command_arguments.cardinal_direction
+      Orientation
     )
   end
 
@@ -84,7 +81,7 @@ RSpec.describe PlaceCommand do
         end
       end
       it 'does not place a robot' do
-        expect(Robot).not_to receive(:new).with(position:, orientation:)
+        expect(Robot).not_to receive(:new)
         place_command
       end
     end

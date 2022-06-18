@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require './lib/robot_actions/movement'
+require './lib/robot_actions/rotation'
 
 class Robot
   def initialize(position:, orientation:)
@@ -19,15 +20,11 @@ class Robot
     @position = position
   end
 
-  def calculate_rotation(direction)
-    @orientation = rotation.rotate(direction: direction, orientation: orientation)
+  def execute_rotation(direction)
+    rotation.rotate(direction: direction, orientation: orientation)
   end 
-
-  def execute_rotation(orientation)
-    @orientation = orientation
-  end
 
   private
 
-  attr_reader :movement, :orientation, :position
+  attr_reader :movement, :orientation, :position, :rotation
 end

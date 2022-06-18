@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-require_relative './commands/place_command'
+require './lib/commands/place_command'
+require './lib/commands/move_command'
 require './lib/tabletop'
 
 class SimulationOrchestrator
@@ -13,6 +14,10 @@ class SimulationOrchestrator
     case input
     when /PLACE/
       @robot = PlaceCommand.new(tabletop).perform(input)
+    when /MOVE/
+      move = MoveCommand.new(tabletop:, robot:)
+      move.perform
+      puts move.response
     end
   end
 

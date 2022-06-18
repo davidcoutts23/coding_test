@@ -16,6 +16,8 @@ class Orientation
 
   attr_reader :cardinal_direction
 
+  private
+  
   def self.cardinal_directions
     %w[NORTH SOUTH EAST WEST]
   end

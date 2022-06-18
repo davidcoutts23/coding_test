@@ -21,10 +21,10 @@ class PlaceCommand
     PlaceCommandInputProcessor::InputValidationError
     Orientation::NonExistentCardinalDirectionError
     Tabletop::NonExistentTabletopPositionError
-    puts e.message
+    @result = e.message
   end
 
-  attr_reader :robot
+  attr_reader :robot, :result
 
   private
 
@@ -46,7 +46,7 @@ class PlaceCommand
   end
 
   def place_robot
-    puts 'robot placed'
+    @result = 'Robot placed'
     Robot.new(
       position: Position.new(x_coordinate: place_command_arguments.x_coordinate,
                              y_coordinate: place_command_arguments.y_coordinate),

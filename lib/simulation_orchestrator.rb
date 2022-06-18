@@ -14,7 +14,9 @@ class SimulationOrchestrator
   def command_for(input)
     case input
     when /PLACE/
-      @robot = PlaceCommand.new(tabletop).perform(input)
+      place = PlaceCommand.new(tabletop)
+      @robot = place.perform(input)
+      puts place.result
     when /MOVE/
       move = MoveCommand.new(tabletop:tabletop, robot:robot)
       move.perform

@@ -2,6 +2,7 @@
 
 require './lib/commands/place_command'
 require './lib/commands/move_command'
+require './lib/commands/rotate_command'
 require './lib/tabletop'
 
 class SimulationOrchestrator
@@ -15,9 +16,13 @@ class SimulationOrchestrator
     when /PLACE/
       @robot = PlaceCommand.new(tabletop).perform(input)
     when /MOVE/
-      move = MoveCommand.new(tabletop:, robot:)
+      move = MoveCommand.new(tabletop:tabletop, robot:robot)
       move.perform
       puts move.result
+    when /LEFT/ || /RIGHT/
+      rotate = RotateCommand.new(tabletop:tabletop, robot:robot)
+      rotate.perform(input)
+      puts rotate.result
     end
   end
 

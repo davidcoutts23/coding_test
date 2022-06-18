@@ -17,7 +17,7 @@ class SimulationOrchestrator
     when /MOVE/
       move = MoveCommand.new(tabletop:, robot:)
       move.perform
-      puts move.response
+      puts move.result
     end
   end
 

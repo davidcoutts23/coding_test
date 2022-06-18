@@ -20,9 +20,9 @@ RSpec.describe MoveCommand do
       expect(robot).to receive(:set_position).with(new_position)
       move_command.perform
     end
-    it 'sets an response informing that the robot has been moved' do
+    it 'sets an result informing that the robot has been moved' do
       move_command.perform
-      expect(move_command.response).to eq("Robot moved to #{new_position.x_coordinate}, #{new_position.y_coordinate}.")
+      expect(move_command.result).to eq("Robot moved to #{new_position.x_coordinate}, #{new_position.y_coordinate}.")
     end
 
     context 'the tabletop position validator raises an error' do
@@ -35,9 +35,9 @@ RSpec.describe MoveCommand do
         expect(robot).not_to receive(:set_position).with(new_position)
         move_command.perform
       end
-      it 'sets an response informing that that a non existent tabletop position error has occurred' do
+      it 'sets an result informing that that a non existent tabletop position error has occurred' do
         move_command.perform
-        expect(move_command.response).to eq('Error: Position does not exist on the tabletop.')
+        expect(move_command.result).to eq('Error: Position does not exist on the tabletop.')
       end
     end
   end

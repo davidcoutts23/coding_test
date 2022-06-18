@@ -16,17 +16,19 @@ class SimulationOrchestrator
     when /PLACE/
       place = PlaceCommand.new(tabletop)
       @robot = place.perform(input)
-      puts place.result
+      @result = place.result
     when /MOVE/
       move = MoveCommand.new(tabletop:tabletop, robot:robot)
       move.perform
-      puts move.result
+      @result = move.result
     when /LEFT/, /RIGHT/
       rotate = RotateCommand.new(tabletop:tabletop, robot:robot)
       rotate.perform(input)
-      puts rotate.result
+      @result = rotate.result
     end
   end
+
+  attr_reader :result
 
   private
 

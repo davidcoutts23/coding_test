@@ -10,6 +10,7 @@ module UserInterface
       print 'Input command: '
       input = gets
       simulation_orchestrator.command_for(input.strip)
+      puts simulation_orchestrator.result
     end
   end
 end

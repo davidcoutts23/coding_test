@@ -9,7 +9,7 @@ class Tabletop
   end
 
   def validate_position(position)
-    return if position.x_coordinate < x_units && position.y_coordinate < y_units
+    return if (0..x_units - 1).include?(position.x_coordinate) && (0..y_units - 1).include?(position.y_coordinate)
 
     raise NonExistentTabletopPositionError,
           'Error: Position does not exist on the tabletop.'

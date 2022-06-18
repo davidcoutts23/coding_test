@@ -27,7 +27,7 @@ RSpec.describe Tabletop do
       )
     end
 
-    context 'an x coordinate provided is out of range' do
+    context 'an x coordinate provided is out of range (too high)' do
       let(:x_coordinate) { 5 }
       it 'raises an error' do
         expect { validate_position }.to raise_error(
@@ -37,7 +37,17 @@ RSpec.describe Tabletop do
       end
     end
 
-    context 'a y coordinate provided is out of range' do
+    context 'an x coordinate provided is out of range (too low)' do
+      let(:x_coordinate) { -1 }
+      it 'raises an error' do
+        expect { validate_position }.to raise_error(
+          Tabletop::NonExistentTabletopPositionError,
+          'Error: Position does not exist on the tabletop.'
+        )
+      end
+    end
+
+    context 'a y coordinate provided is out of range (too high)' do
       let(:y_coordinate) { 5 }
       it 'raises an error' do
         expect { validate_position }.to raise_error(
@@ -46,6 +56,17 @@ RSpec.describe Tabletop do
         )
       end
     end
+
+    context 'a y coordinate provided is out of range (too low)' do
+      let(:y_coordinate) { -1 }
+      it 'raises an error' do
+        expect { validate_position }.to raise_error(
+          Tabletop::NonExistentTabletopPositionError,
+          'Error: Position does not exist on the tabletop.'
+        )
+      end
+    end
+
 
     context 'both x and y coordinates provided are out of range' do
       let(:x_coordinate) { 5 }

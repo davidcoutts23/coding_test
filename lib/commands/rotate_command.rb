@@ -9,8 +9,7 @@ class RotateCommand
   attr_reader :result
 
   def perform(direction)
-    @new_orientation = robot.calculate_rotation(direction)
-    robot.execute_rotation(new_orientation)
+    robot.execute_rotation(direction)
     @result = "Robot has been rotated #{direction}"
   end
 

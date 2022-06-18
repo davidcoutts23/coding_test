@@ -7,17 +7,15 @@ RSpec.describe RotateCommand do
 
   let(:robot) { instance_double(Robot) }
   let(:tabletop) { instance_double(Tabletop) }
-  let(:new_orientation) { instance_double(Orientation, cardinal_direction: "NORTH") }
   let(:direction) { 'LEFT' }
 
   before(:each) do
-    allow(robot).to receive(:calculate_rotation).with(direction).and_return(new_orientation)
-    allow(robot).to receive(:execute_rotation).with(new_orientation)
+    allow(robot).to receive(:execute_rotation).with(direction)
   end
 
   describe '.perform' do
     it 'updates the robot orientation to the orientation as calculated by the robots rotation action' do
-      expect(robot).to receive(:execute_rotation).with(new_orientation)
+      expect(robot).to receive(:execute_rotation).with(direction)
       rotate_command.perform(direction)
     end
     it 'sets an result informing that the robot has been rotated' do

@@ -12,7 +12,7 @@ class Orientation
       next unless element == cardinal_direction
 
       @cardinal_direction = Orientation.retreive_cardinal_direction_for(index +
-        (direction == 'left' ? -1 : 1))
+        (direction == 'LEFT' ? -1 : 1))
       break
     end
   end

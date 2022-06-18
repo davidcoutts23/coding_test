@@ -30,30 +30,30 @@ RSpec.describe Orientation do
 
   describe '.rotate' do
     context 'rotating left' do
-      let(:direction) { 'left' }
+      let(:direction) { 'LEFT' }
       it 'returns a value to the left of the current cardinal direction' do
-        orientation.rotate('left')
+        orientation.rotate(direction)
         expect(orientation.cardinal_direction).to eq('NORTH')
       end
       context 'current cardinal direction is start of array (first element)' do
         let(:cardinal_direction) { 'NORTH' }
         it 'returns a value to the left of the current cardinal direction' do
-          orientation.rotate('left')
+          orientation.rotate('LEFT')
           expect(orientation.cardinal_direction).to eq('WEST')
         end
       end
     end
 
     context 'rotating right' do
-      let(:direction) { 'right' }
+      let(:direction) { 'RIGHT' }
       it 'returns a value to the right of the current cardinal direction' do
-        orientation.rotate('right')
+        orientation.rotate(direction)
         expect(orientation.cardinal_direction).to eq('SOUTH')
       end
       context 'current cardinal direction is end of array (last element)' do
         let(:cardinal_direction) { 'WEST' }
         it 'returns a value to the left of the current cardinal direction' do
-          orientation.rotate('right')
+          orientation.rotate(direction)
           expect(orientation.cardinal_direction).to eq('NORTH')
         end
       end

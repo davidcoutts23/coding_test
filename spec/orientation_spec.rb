@@ -3,8 +3,8 @@
 require 'spec_helper'
 
 RSpec.describe Orientation do
-  let(:validate_cardinal_direction) { described_class.validate_cardinal_direction(cardinal_direction) }
   let(:cardinal_direction) { 'NORTH' }
+  subject(:validate_cardinal_direction) { described_class.validate_cardinal_direction(cardinal_direction) }
 
   describe '#validate_cardinal_direction' do
     it 'returns with no exception' do
@@ -21,6 +21,41 @@ RSpec.describe Orientation do
           Orientation::NonExistentCardinalDirectionError,
           'Error: Cardinal direction does not exist.'
         )
+      end
+    end
+  end
+
+  subject(:orientation) { Orientation.new(cardinal_direction:) }
+  let(:cardinal_direction) { 'EAST' }
+
+  describe '.rotate' do
+    context 'rotating left' do
+      let(:direction) { 'left' }
+      it 'returns a value to the left of the current cardinal direction' do
+        orientation.rotate('left')
+        expect(orientation.cardinal_direction).to eq('NORTH')
+      end
+      context 'current cardinal direction is start of array (first element)' do
+        let(:cardinal_direction) { 'NORTH' }
+        it 'returns a value to the left of the current cardinal direction' do
+          orientation.rotate('left')
+          expect(orientation.cardinal_direction).to eq('WEST')
+        end
+      end
+    end
+
+    context 'rotating right' do
+      let(:direction) { 'right' }
+      it 'returns a value to the right of the current cardinal direction' do
+        orientation.rotate('right')
+        expect(orientation.cardinal_direction).to eq('SOUTH')
+      end
+      context 'current cardinal direction is end of array (last element)' do
+        let(:cardinal_direction) { 'WEST' }
+        it 'returns a value to the left of the current cardinal direction' do
+          orientation.rotate('right')
+          expect(orientation.cardinal_direction).to eq('NORTH')
+        end
       end
     end
   end

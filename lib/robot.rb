@@ -10,10 +10,15 @@ class Robot
   end
 
   def move
-    movement.move(position, orientation)
+    @position = movement.move(position:, orientation:)
+  end
+
+  # TODO:  Should be using attr writer for this but was having problems with the spec.
+  def set_position(position)
+    @position = position
   end
 
   private
 
-  attr_reader :movement, position, orientation
+  attr_reader :movement, :orientation, :position
 end

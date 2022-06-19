@@ -21,10 +21,7 @@ RSpec.describe Tabletop do
 
   describe '.position_valid?' do
     it 'returns with no error raised' do
-      expect { validate_position }.to_not raise_error(
-        Tabletop::NonExistentTabletopPositionError,
-        'Error: Position does not exist on the tabletop.'
-      )
+      expect { validate_position }.to_not raise_error
     end
 
     context 'an x coordinate provided is out of range (too high)' do

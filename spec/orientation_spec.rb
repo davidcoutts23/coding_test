@@ -8,10 +8,7 @@ RSpec.describe Orientation do
 
   describe '#validate_cardinal_direction' do
     it 'returns with no exception' do
-      expect { validate_cardinal_direction }.to_not raise_error(
-        Orientation::NonExistentCardinalDirectionError,
-        'Error: Cardinal direction does not exist.'
-      )
+      expect { validate_cardinal_direction }.to_not raise_error
     end
 
     context 'the orientation provided does not exist' do

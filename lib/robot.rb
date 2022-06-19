@@ -25,9 +25,7 @@ class Robot
   end
 
   def report
-    "Output: #{position.x_coordinate},
-    #{position.y_coordinate},
-    #{orientation.cardinal_direction}"
+    "Output: #{position.x_coordinate},#{position.y_coordinate},#{orientation.cardinal_direction}"
   end
 
   private

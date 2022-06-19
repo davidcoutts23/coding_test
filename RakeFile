@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rubocop/rake_task'
 
 task default: %w[lint test]
@@ -12,5 +14,9 @@ task :run do
 end
 
 task :test do
-  bundle exec rspec 'spec/squarer_spec.rb'
+  bundle exec 'rspec -fd'
+end
+
+task :integration_test do
+  bundle exec 'rspec -fd  spec/integration_test.rb'
 end

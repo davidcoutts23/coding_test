@@ -22,7 +22,7 @@ RSpec.describe MoveCommand do
     end
     it 'sets an result informing that the robot has been moved' do
       move_command.perform
-      expect(move_command.result).to eq("Robot moved to #{new_position.x_coordinate}, #{new_position.y_coordinate}.")
+      expect(move_command.result).to eq("Robot moved to #{new_position.x_coordinate}, #{new_position.y_coordinate}")
     end
 
     context 'the tabletop position validator raises an error' do

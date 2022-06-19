@@ -11,6 +11,7 @@ require 'orientation'
 require 'tabletop'
 require './lib/robot'
 require './lib/robot_actions/movement'
+require './lib/simulation_orchestrator'
 require 'pry'
 
 # frozen_string_literal: true

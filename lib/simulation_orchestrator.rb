@@ -3,6 +3,7 @@
 require './lib/commands/place_command'
 require './lib/commands/move_command'
 require './lib/commands/rotate_command'
+require './lib/commands/report_command'
 require './lib/tabletop'
 
 class SimulationOrchestrator
@@ -25,6 +26,10 @@ class SimulationOrchestrator
       rotate = RotateCommand.new(tabletop:, robot:)
       rotate.perform(input)
       @result = rotate.result
+    when /REPORT/
+      report = ReportCommand.new(tabletop:, robot:)
+      report.perform
+      @result = report.result
     end
   end
 

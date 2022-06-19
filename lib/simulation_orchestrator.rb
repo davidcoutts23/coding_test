@@ -18,11 +18,11 @@ class SimulationOrchestrator
       @robot = place.perform(input)
       @result = place.result
     when /MOVE/
-      move = MoveCommand.new(tabletop:tabletop, robot:robot)
+      move = MoveCommand.new(tabletop:, robot:)
       move.perform
       @result = move.result
     when /LEFT/, /RIGHT/
-      rotate = RotateCommand.new(tabletop:tabletop, robot:robot)
+      rotate = RotateCommand.new(tabletop:, robot:)
       rotate.perform(input)
       @result = rotate.result
     end

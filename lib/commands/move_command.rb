@@ -15,7 +15,7 @@ class MoveCommand
     begin
       tabletop.validate_position(new_position)
       robot.set_position(new_position)
-      @result = "Robot moved to #{new_position.x_coordinate}, #{new_position.y_coordinate}."
+      @result = "Robot moved to #{new_position.x_coordinate}, #{new_position.y_coordinate}"
     rescue StandardError => e
       Tabletop::NonExistentTabletopPositionError
       @result = e.message

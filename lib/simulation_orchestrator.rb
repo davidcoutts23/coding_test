@@ -19,14 +19,20 @@ class SimulationOrchestrator
       @robot = place.perform(input)
       @result = place.result
     when /MOVE/
+      return unless robot_placed?
+
       move = MoveCommand.new(tabletop:, robot:)
       move.perform
       @result = move.result
     when /LEFT/, /RIGHT/
+      return unless robot_placed?
+
       rotate = RotateCommand.new(tabletop:, robot:)
       rotate.perform(input)
       @result = rotate.result
     when /REPORT/
+      return unless robot_placed?
+
       report = ReportCommand.new(tabletop:, robot:)
       report.perform
       @result = report.result
@@ -38,4 +44,11 @@ class SimulationOrchestrator
   private
 
   attr_accessor :tabletop, :robot
+
+  def robot_placed?
+    return true unless @robot.nil?
+
+    @result = 'No robot placed, command ignored'
+    false
+  end
 end

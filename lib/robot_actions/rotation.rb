@@ -7,6 +7,3 @@ class Rotation
     orientation.rotate(direction)
   end
 end
-    
-
-    

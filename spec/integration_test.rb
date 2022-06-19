@@ -97,14 +97,14 @@ RSpec.describe 'integration test' do
     it 'successfully executes ~900 commands and reports correctly' do
       sim_orc.command_for('PLACE 0,0,NORTH')
       expect(sim_orc.result).to eq('Robot placed')
-      900.times{ sim_orc.command_for('LEFT') }
+      900.times { sim_orc.command_for('LEFT') }
       sim_orc.command_for('REPORT')
       expect(sim_orc.result).to eq('Output: 0,0,NORTH')
     end
     it 'unsuccessfully executes ~1100. Exits the app.' do
       sim_orc.command_for('PLACE 0,0,NORTH')
       expect(sim_orc.result).to eq('Robot placed')
-      expect { 1100.times{ sim_orc.command_for('LEFT') } }.to raise_error(SystemExit)
+      expect { 1100.times { sim_orc.command_for('LEFT') } }.to raise_error(SystemExit)
     end
   end
 end

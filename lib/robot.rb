@@ -21,8 +21,14 @@ class Robot
   end
 
   def execute_rotation(direction)
-    rotation.rotate(direction: direction, orientation: orientation)
-  end 
+    rotation.rotate(direction:, orientation:)
+  end
+
+  def report
+    "Output: #{position.x_coordinate},
+    #{position.y_coordinate},
+    #{orientation.cardinal_direction}"
+  end
 
   private
 

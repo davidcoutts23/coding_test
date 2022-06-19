@@ -5,8 +5,17 @@ require './lib/commands/move_command'
 require './lib/commands/rotate_command'
 require './lib/commands/report_command'
 require './lib/tabletop'
+require 'limiter'
 
 class SimulationOrchestrator
+  extend Limiter::Mixin
+  limit_method(:command_for, rate: 1000) do
+    # Simply puts-ing a message and exiting the app is not exactly graceful. 
+    # Couldn't figure out how to return a value for command_for to re-enter the loop
+    puts 'Command limit (1000/minute) exceeded. Goodbye.'
+    exit
+  end
+
   def initialize
     @robot = nil
     @tabletop = Tabletop.new(x_units: 5, y_units: 5)
@@ -36,7 +45,6 @@ class SimulationOrchestrator
       report = ReportCommand.new(tabletop:, robot:)
       report.perform
       @result = report.result
-    end
   end
 
   attr_reader :result

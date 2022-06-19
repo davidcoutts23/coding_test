@@ -12,7 +12,6 @@ RSpec.describe MoveCommand do
   before(:each) do
     allow(robot).to receive(:calculate_move).and_return(new_position)
     allow(tabletop).to receive(:validate_position).with(new_position).and_return(nil)
-    # allow(robot).to receive(:set_position).with(new_position)
     allow(robot).to receive(:position=).with(new_position)
   end
 

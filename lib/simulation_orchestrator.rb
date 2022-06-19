@@ -45,6 +45,7 @@ class SimulationOrchestrator
       report = ReportCommand.new(tabletop:, robot:)
       report.perform
       @result = report.result
+    end
   end
 
   attr_reader :result

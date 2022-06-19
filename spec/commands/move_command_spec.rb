@@ -12,12 +12,13 @@ RSpec.describe MoveCommand do
   before(:each) do
     allow(robot).to receive(:calculate_move).and_return(new_position)
     allow(tabletop).to receive(:validate_position).with(new_position).and_return(nil)
-    allow(robot).to receive(:set_position).with(new_position)
+    # allow(robot).to receive(:set_position).with(new_position)
+    allow(robot).to receive(:position=).with(new_position)
   end
 
   describe '.perform' do
     it 'updates the robot position to the position as calculated by the robots move action' do
-      expect(robot).to receive(:set_position).with(new_position)
+      expect(robot).to receive(:position=).with(new_position)
       move_command.perform
     end
     it 'sets an result informing that the robot has been moved' do
@@ -32,7 +33,7 @@ RSpec.describe MoveCommand do
         end
       end
       it 'does not update the robots position' do
-        expect(robot).not_to receive(:set_position).with(new_position)
+        expect(robot).not_to receive(:position=).with(new_position)
         move_command.perform
       end
       it 'sets an result informing that that a non existent tabletop position error has occurred' do

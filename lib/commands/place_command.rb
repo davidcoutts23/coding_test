@@ -8,7 +8,7 @@ require './lib/commands/place_command_input_processor'
 class PlaceCommand
   class PlaceCommandInvalidError < StandardError; end
 
-  def initialize(tabletop)
+  def initialize(tabletop:, robot:)
     @tabletop = tabletop
   end
 

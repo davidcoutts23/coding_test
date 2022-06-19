@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 RSpec.describe PlaceCommand do
-  subject(:place_command) { PlaceCommand.new(tabletop).perform(input) }
+  subject(:place_command) { PlaceCommand.new(tabletop:, robot:).perform(input) }
 
   let(:tabletop) { double }
+  let(:robot) { double }
 
   let(:input) { 'PLACE 10,20,NORTH' }
   let(:x_coordinate) { 1 }

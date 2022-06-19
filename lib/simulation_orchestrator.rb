@@ -10,7 +10,7 @@ require 'limiter'
 class SimulationOrchestrator
   extend Limiter::Mixin
   limit_method(:command_for, rate: 1000) do
-    # Simply puts-ing a message and exiting the app is not exactly graceful. 
+    # Simply puts-ing a message and exiting the app is not exactly graceful.
     # Couldn't figure out how to return a value for command_for to re-enter the loop
     puts 'Command limit (1000/minute) exceeded. Goodbye.'
     exit
@@ -24,7 +24,7 @@ class SimulationOrchestrator
   def command_for(input)
     case input
     when /PLACE/
-      place = PlaceCommand.new(tabletop)
+      place = PlaceCommand.new(tabletop:, robot:)
       @robot = place.perform(input)
       @result = place.result
     when /MOVE/

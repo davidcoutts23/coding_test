@@ -1,13 +1,8 @@
 # frozen_string_literal: true
 
-class RotateCommand
-  def initialize(tabletop:, robot:)
-    @tabletop = tabletop
-    @robot = robot
-  end
+require_relative 'command'
 
-  attr_reader :result
-
+class RotateCommand < Command
   def perform(direction)
     robot.execute_rotation(direction)
     @result = "Robot has been rotated #{direction}"
@@ -15,5 +10,5 @@ class RotateCommand
 
   private
 
-  attr_reader :robot, :tabletop, :new_orientation
+  attr_reader :tabletop, :new_orientation
 end

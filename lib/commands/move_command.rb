@@ -1,15 +1,9 @@
 # frozen_string_literal: true
 
 require './lib/tabletop'
+require_relative 'command'
 
-class MoveCommand
-  def initialize(tabletop:, robot:)
-    @tabletop = tabletop
-    @robot = robot
-  end
-
-  attr_reader :result
-
+class MoveCommand < Command
   def perform
     @new_position = robot.calculate_move
     begin
@@ -24,5 +18,5 @@ class MoveCommand
 
   private
 
-  attr_reader :robot, :tabletop, :new_position
+  attr_reader :tabletop, :new_position
 end

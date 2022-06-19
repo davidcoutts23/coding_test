@@ -1,20 +1,10 @@
 # frozen_string_literal: true
 
 require './lib/tabletop'
+require_relative 'command'
 
-class ReportCommand
-  def initialize(tabletop:, robot:)
-    @tabletop = tabletop
-    @robot = robot
-  end
-
-  attr_reader :result
-
+class ReportCommand < Command
   def perform
     @result = robot.report
   end
-
-  private
-
-  attr_reader :robot
 end

@@ -4,13 +4,10 @@ require './lib/robot'
 require './lib/position'
 require './lib/orientation'
 require './lib/commands/place_command_input_processor'
+require_relative 'command'
 
-class PlaceCommand
+class PlaceCommand < Command
   class PlaceCommandInvalidError < StandardError; end
-
-  def initialize(tabletop:, robot:)
-    @tabletop = tabletop
-  end
 
   def perform(input)
     process_input_for(input)
@@ -23,8 +20,6 @@ class PlaceCommand
     Tabletop::NonExistentTabletopPositionError
     @result = e.message
   end
-
-  attr_reader :robot, :result
 
   private
 

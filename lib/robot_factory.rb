@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'robot'
+require './lib/robot'
 
 class RobotFactory
   def self.generate(position:, orientation:)

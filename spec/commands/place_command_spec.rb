@@ -3,8 +3,8 @@
 RSpec.describe PlaceCommand do
   subject(:place_command) { PlaceCommand.new(tabletop:, robot:).perform(input) }
 
-  let(:tabletop) { double }
-  let(:robot) { double }
+  let(:tabletop) { instance_double(Tabletop) }
+  let(:robot) { instance_double(Robot) }
 
   let(:input) { 'PLACE 10,20,NORTH' }
   let(:x_coordinate) { 1 }

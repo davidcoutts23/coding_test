@@ -38,7 +38,7 @@ REPORT
 
 ### Running the test suite 
 
-`docker run -it robot_challenge bundle exec rake run` to run all tests (unit and integration)
+`docker run -it robot_challenge bundle exec rake test` to run unit tests
 `docker run -it robot_challenge bundle exec rake integration_test` to run integration tests only
 
 

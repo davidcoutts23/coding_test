@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe UserInterface do
   subject(:user_interface) { UserInterface.new }
 
   let(:simulation_orchestrator) { instance_double(SimulationOrchestrator) }
-  let(:input) { "PLACE 1,2,NORTH" }
+  let(:input) { 'PLACE 1,2,NORTH' }
 
   before(:each) do
     allow(SimulationOrchestrator).to receive(:new).and_return(simulation_orchestrator)

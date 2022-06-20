@@ -3,8 +3,8 @@
 require './lib/robot_factory'
 require './lib/position'
 require './lib/orientation'
-require './lib/commands/place_command_input_processor'
-require './lib/commands/command'
+require_relative 'place_command_input_processor'
+require_relative 'command'
 
 class PlaceCommand < Command
   class PlaceCommandInvalidError < StandardError; end

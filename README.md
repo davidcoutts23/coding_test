@@ -28,7 +28,7 @@ REPORT
 
 ## Usage
 
-- Clone repository `git clone https://github.com/davidcoutts23/certsy_robot_challenge.git`
+- Clone repository `git clone https://github.com/davidcoutts23/coding_test.git`
 - cd into project directory `cd certsy_robot_challenge`
 - Build docker image `docker build -t robot_challenge .`
 

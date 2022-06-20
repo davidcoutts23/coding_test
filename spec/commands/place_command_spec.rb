@@ -42,7 +42,7 @@ RSpec.describe PlaceCommand do
     allow(TabletopPositionValidator).to receive(:validate).with(position:, tabletop:).and_return(nil)
 
     allow(PositionFactory).to receive(:generate).with(x_coordinate:, y_coordinate:).and_return(position)
-    allow(Orientation).to receive(:new).with(cardinal_direction:).and_return(orientation)
+    allow(OrientationFactory).to receive(:generate).with(cardinal_direction:).and_return(orientation)
 
     allow(RobotFactory).to receive(:generate).with(position:, orientation:)
   end

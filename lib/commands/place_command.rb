@@ -2,8 +2,7 @@
 
 require './lib/factories/robot_factory'
 require './lib/factories/position_factory'
-require './lib/position'
-require './lib/orientation'
+require './lib/factories/orientation_factory'
 require_relative 'place_command_input_processor'
 require_relative 'command'
 require './lib/validators/tabletop_position_validator'
@@ -48,7 +47,7 @@ class PlaceCommand < Command
     RobotFactory.generate(
       position: PositionFactory.generate(x_coordinate: place_command_arguments.x_coordinate,
                                          y_coordinate: place_command_arguments.y_coordinate),
-      orientation: Orientation.new(cardinal_direction: place_command_arguments.cardinal_direction)
+      orientation: OrientationFactory.generate(cardinal_direction: place_command_arguments.cardinal_direction)
     )
   end
 end

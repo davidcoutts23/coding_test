@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require './lib/helpers/validate_integer'
+require 'spec_helper'
 
 RSpec.describe String do
   subject(:string) { '10' }

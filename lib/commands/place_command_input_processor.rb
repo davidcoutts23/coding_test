@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require './lib/helpers/validate_integer'
+require './lib/validators/validate_integer'
 require './lib/commands/place_command_arguments'
 
 class PlaceCommandInputProcessor

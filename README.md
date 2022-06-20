@@ -1,4 +1,4 @@
-# Certsy robot challenge
+# Robot challenge
 
 My solution to the Certsy robot challenge
 

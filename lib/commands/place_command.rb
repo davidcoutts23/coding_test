@@ -37,9 +37,9 @@ class PlaceCommand < Command
 
   def validate_position
     TabletopPositionValidator.validate(position: Position.new(
-                                 x_coordinate: place_command_arguments.x_coordinate,
-                                 y_coordinate: place_command_arguments.y_coordinate
-                               ), tabletop: tabletop)
+      x_coordinate: place_command_arguments.x_coordinate,
+      y_coordinate: place_command_arguments.y_coordinate
+    ), tabletop:)
   end
 
   def place_robot

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require './lib/orientation'
 
 class CardinalDirectionValidator
@@ -6,4 +7,3 @@ class CardinalDirectionValidator
     Orientation.validate_cardinal_direction(cardinal_direction)
   end
 end
-

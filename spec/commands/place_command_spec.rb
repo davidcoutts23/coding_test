@@ -39,7 +39,7 @@ RSpec.describe PlaceCommand do
     allow(place_command_input_processor).to receive(:perform).with(input).and_return(place_command_arguments)
 
     allow(CardinalDirectionValidator).to receive(:validate).with(cardinal_direction).and_return(nil)
-    allow(TabletopPositionValidator).to receive(:validate).with(position: position, tabletop: tabletop).and_return(nil)
+    allow(TabletopPositionValidator).to receive(:validate).with(position:, tabletop:).and_return(nil)
 
     allow(Position).to receive(:new).with(x_coordinate:, y_coordinate:).and_return(position)
     allow(Orientation).to receive(:new).with(cardinal_direction:).and_return(orientation)

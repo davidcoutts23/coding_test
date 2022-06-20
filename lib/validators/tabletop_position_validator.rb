@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require './lib/tabletop'
 
 class TabletopPositionValidator
@@ -6,4 +7,3 @@ class TabletopPositionValidator
     tabletop.validate_position(position)
   end
 end
-

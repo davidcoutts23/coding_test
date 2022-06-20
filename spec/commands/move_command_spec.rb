@@ -11,7 +11,8 @@ RSpec.describe MoveCommand do
 
   before(:each) do
     allow(robot).to receive(:calculate_move).and_return(new_position)
-    allow(TabletopPositionValidator).to receive(:validate).with(position: new_position, tabletop: tabletop).and_return(nil)
+    allow(TabletopPositionValidator).to receive(:validate).with(position: new_position,
+                                                                tabletop:).and_return(nil)
     allow(robot).to receive(:position=).with(new_position)
   end
 
@@ -27,7 +28,7 @@ RSpec.describe MoveCommand do
 
     context 'the tabletop position validator raises an error' do
       before(:each) do
-        allow(TabletopPositionValidator).to receive(:validate).with(position: new_position, tabletop: tabletop) do
+        allow(TabletopPositionValidator).to receive(:validate).with(position: new_position, tabletop:) do
           raise Tabletop::NonExistentTabletopPositionError, 'Error: Position does not exist on the tabletop.'
         end
       end

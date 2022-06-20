@@ -41,5 +41,11 @@ REPORT
 `docker run -it robot_challenge bundle exec rake test` to run unit tests
 `docker run -it robot_challenge bundle exec rake integration_test` to run integration tests only
 
+## Concept map
+
+For the sake of clarity, not everything is here...however this should provide a reasonable amount of context about how the concepts hang together (which is reflected in the system design)
+
+<img width="467" alt="image" src="https://user-images.githubusercontent.com/25240207/174580023-a5a821cc-90fd-4987-a40c-3ade66c4a596.png">
+
 
 

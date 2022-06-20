@@ -5,6 +5,8 @@ require './lib/position'
 require './lib/orientation'
 require_relative 'place_command_input_processor'
 require_relative 'command'
+require './lib/validators/tabletop_position_validator'
+require 'pry'
 
 class PlaceCommand < Command
   class PlaceCommandInvalidError < StandardError; end
@@ -34,10 +36,10 @@ class PlaceCommand < Command
   end
 
   def validate_position
-    tabletop.validate_position(Position.new(
+    TabletopPositionValidator.validate(position: Position.new(
                                  x_coordinate: place_command_arguments.x_coordinate,
                                  y_coordinate: place_command_arguments.y_coordinate
-                               ))
+                               ), tabletop: tabletop)
   end
 
   def place_robot

@@ -39,15 +39,17 @@ RSpec.describe PlaceCommand do
     allow(place_command_input_processor).to receive(:perform).with(input).and_return(place_command_arguments)
 
     allow(Orientation).to receive(:validate_cardinal_direction).with(cardinal_direction).and_return(nil)
-    allow(tabletop).to receive(:validate_position).with(position).and_return(nil)
+    allow(TabletopPositionValidator).to receive(:validate).with(position: position, tabletop: tabletop).and_return(nil)
 
     allow(Position).to receive(:new).with(x_coordinate:, y_coordinate:).and_return(position)
     allow(Orientation).to receive(:new).with(cardinal_direction:).and_return(orientation)
+
+    allow(RobotFactory).to receive(:generate).with(position:, orientation:)
   end
 
   describe '.perform' do
     it 'places a robot at the specified position and orientation' do
-      expect(Robot).to receive(:new).with(orientation:, position:)
+      expect(RobotFactory).to receive(:generate).with(position:, orientation:)
       place_command
     end
 
@@ -58,7 +60,7 @@ RSpec.describe PlaceCommand do
         end
       end
       it 'does not place a robot' do
-        expect(Robot).not_to receive(:new)
+        expect(RobotFactory).not_to receive(:generate).with(orientation:, position:)
         place_command
       end
     end
@@ -70,19 +72,19 @@ RSpec.describe PlaceCommand do
         end
       end
       it 'does not place a robot' do
-        expect(Robot).not_to receive(:new)
+        expect(RobotFactory).not_to receive(:generate).with(orientation:, position:)
         place_command
       end
     end
 
     context 'position validation on tabletop raises an error' do
       before(:each) do
-        allow(tabletop).to receive(:validate_position) do
+        allow(TabletopPositionValidator).to receive(:validate) do
           raise Tabletop::NonExistentTabletopPositionError
         end
       end
       it 'does not place a robot' do
-        expect(Robot).not_to receive(:new)
+        expect(RobotFactory).not_to receive(:generate).with(orientation:, position:)
         place_command
       end
     end

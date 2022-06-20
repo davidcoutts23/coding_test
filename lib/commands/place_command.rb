@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-require './lib/robot_factory'
+require './lib/factories/robot_factory'
+require './lib/factories/position_factory'
 require './lib/position'
 require './lib/orientation'
 require_relative 'place_command_input_processor'
@@ -36,7 +37,7 @@ class PlaceCommand < Command
   end
 
   def validate_position
-    TabletopPositionValidator.validate(position: Position.new(
+    TabletopPositionValidator.validate(position: PositionFactory.generate(
       x_coordinate: place_command_arguments.x_coordinate,
       y_coordinate: place_command_arguments.y_coordinate
     ), tabletop:)
@@ -45,8 +46,8 @@ class PlaceCommand < Command
   def place_robot
     @result = 'Robot placed'
     RobotFactory.generate(
-      position: Position.new(x_coordinate: place_command_arguments.x_coordinate,
-                             y_coordinate: place_command_arguments.y_coordinate),
+      position: PositionFactory.generate(x_coordinate: place_command_arguments.x_coordinate,
+                                         y_coordinate: place_command_arguments.y_coordinate),
       orientation: Orientation.new(cardinal_direction: place_command_arguments.cardinal_direction)
     )
   end

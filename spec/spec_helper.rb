@@ -14,7 +14,8 @@ require './lib/robot'
 require './lib/robot_actions/movement'
 require './lib/simulation_orchestrator'
 require './lib/validators/tabletop_position_validator'
-require './lib/robot_factory'
+require './lib/factories/robot_factory'
+require './lib/factories/position_factory'
 require 'pry'
 
 # frozen_string_literal: true

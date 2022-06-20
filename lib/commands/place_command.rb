@@ -6,7 +6,7 @@ require './lib/orientation'
 require_relative 'place_command_input_processor'
 require_relative 'command'
 require './lib/validators/tabletop_position_validator'
-require 'pry'
+require './lib/validators/cardinal_direction_validator'
 
 class PlaceCommand < Command
   class PlaceCommandInvalidError < StandardError; end
@@ -32,7 +32,7 @@ class PlaceCommand < Command
   end
 
   def validate_cardinal_direction
-    Orientation.validate_cardinal_direction(place_command_arguments.cardinal_direction)
+    CardinalDirectionValidator.validate(place_command_arguments.cardinal_direction)
   end
 
   def validate_position

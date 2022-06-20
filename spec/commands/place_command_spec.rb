@@ -38,7 +38,7 @@ RSpec.describe PlaceCommand do
     allow(PlaceCommandInputProcessor).to receive(:new).and_return(place_command_input_processor)
     allow(place_command_input_processor).to receive(:perform).with(input).and_return(place_command_arguments)
 
-    allow(Orientation).to receive(:validate_cardinal_direction).with(cardinal_direction).and_return(nil)
+    allow(CardinalDirectionValidator).to receive(:validate).with(cardinal_direction).and_return(nil)
     allow(TabletopPositionValidator).to receive(:validate).with(position: position, tabletop: tabletop).and_return(nil)
 
     allow(Position).to receive(:new).with(x_coordinate:, y_coordinate:).and_return(position)
@@ -67,7 +67,7 @@ RSpec.describe PlaceCommand do
 
     context 'cardinal direction validation raises an error' do
       before(:each) do
-        allow(Orientation).to receive(:validate_cardinal_direction) do
+        allow(CardinalDirectionValidator).to receive(:validate).with(cardinal_direction) do
           raise Orientation::NonExistentCardinalDirectionError
         end
       end

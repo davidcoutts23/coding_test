@@ -10,5 +10,5 @@ class RotateCommand < Command
 
   private
 
-  attr_reader :tabletop, :new_orientation
+  attr_reader :tabletop
 end

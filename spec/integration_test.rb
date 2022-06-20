@@ -93,6 +93,21 @@ RSpec.describe 'integration test' do
     end
   end
 
+  context 'enter a valid placement, then invalid, and then valid' do
+    it 'proceeds as normal following the third placement' do
+      sim_orc.command_for('PLACE 0,0,NORTH')
+      expect(sim_orc.result).to eq('Robot placed')
+      sim_orc.command_for('PLACE 0,NORTH')
+      expect(sim_orc.result).to eq('Error: Incorrect number of arguments for PLACE command. Expected format is PLACE X,Y,F')
+      sim_orc.command_for('PLACE 0,0,NORTH')
+      expect(sim_orc.result).to eq('Robot placed')
+      sim_orc.command_for('MOVE')
+      expect(sim_orc.result).to eq('Robot moved to 0, 1')
+      sim_orc.command_for('REPORT')
+      expect(sim_orc.result).to eq('Output: 0,1,NORTH')
+    end
+  end
+
   context 'Automate entry of commands' do
     it 'successfully executes ~900 commands and reports correctly' do
       sim_orc.command_for('PLACE 0,0,NORTH')

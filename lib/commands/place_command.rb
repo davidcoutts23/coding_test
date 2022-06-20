@@ -21,6 +21,7 @@ class PlaceCommand < Command
     Orientation::NonExistentCardinalDirectionError
     Tabletop::NonExistentTabletopPositionError
     @result = e.message
+    @robot = nil
   end
 
   private

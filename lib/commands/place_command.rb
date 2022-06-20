@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require './lib/robot'
+require './lib/robot_factory'
 require './lib/position'
 require './lib/orientation'
 require './lib/commands/place_command_input_processor'
-require_relative 'command'
+require './lib/commands/command'
 
 class PlaceCommand < Command
   class PlaceCommandInvalidError < StandardError; end
@@ -42,7 +42,7 @@ class PlaceCommand < Command
 
   def place_robot
     @result = 'Robot placed'
-    Robot.new(
+    RobotFactory.generate(
       position: Position.new(x_coordinate: place_command_arguments.x_coordinate,
                              y_coordinate: place_command_arguments.y_coordinate),
       orientation: Orientation.new(cardinal_direction: place_command_arguments.cardinal_direction)

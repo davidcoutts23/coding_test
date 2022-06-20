@@ -23,13 +23,23 @@ RSpec.describe Movement do
                     y_coordinate: y_coordinate_output)
   end
 
+  before(:each) do
+    allow(PositionFactory)
+      .to receive(:generate)
+      .with(x_coordinate: position_output.x_coordinate, y_coordinate: position_output.y_coordinate)
+      .and_return(position_output)
+  end
+
   describe '.move' do
     context 'move north' do
       let(:cardinal_direction) { 'NORTH' }
       let(:x_coordinate_output) { 0 }
       let(:y_coordinate_output) { 1 }
       it 'creates a new position with y_coordinate incremented by 1' do
-        expect(Position).to receive(:new).with(x_coordinate: x_coordinate_output, y_coordinate: y_coordinate_output)
+        expect(PositionFactory)
+          .to receive(:generate)
+          .with(x_coordinate: position_output.x_coordinate, y_coordinate: position_output.y_coordinate)
+          .and_return(position_output)
         movement.move(position: position_input, orientation: orientation_input)
       end
     end
@@ -39,7 +49,10 @@ RSpec.describe Movement do
       let(:x_coordinate_output) { 0 }
       let(:y_coordinate_output) { -1 }
       it 'creates a new position with y_coordinate decremented by 1' do
-        expect(Position).to receive(:new).with(x_coordinate: x_coordinate_output, y_coordinate: y_coordinate_output)
+        expect(PositionFactory)
+          .to receive(:generate)
+          .with(x_coordinate: position_output.x_coordinate, y_coordinate: position_output.y_coordinate)
+          .and_return(position_output)
         movement.move(position: position_input, orientation: orientation_input)
       end
     end
@@ -49,7 +62,10 @@ RSpec.describe Movement do
       let(:x_coordinate_output) { 1 }
       let(:y_coordinate_output) { 0 }
       it 'creates a new position with x_coordinate incremented by 1' do
-        expect(Position).to receive(:new).with(x_coordinate: x_coordinate_output, y_coordinate: y_coordinate_output)
+        expect(PositionFactory)
+          .to receive(:generate)
+          .with(x_coordinate: position_output.x_coordinate, y_coordinate: position_output.y_coordinate)
+          .and_return(position_output)
         movement.move(position: position_input, orientation: orientation_input)
       end
     end
@@ -59,7 +75,10 @@ RSpec.describe Movement do
       let(:x_coordinate_output) { -1 }
       let(:y_coordinate_output) { 0 }
       it 'creates a new position with x_coordinate incremented by 1' do
-        expect(Position).to receive(:new).with(x_coordinate: x_coordinate_output, y_coordinate: y_coordinate_output)
+        expect(PositionFactory)
+          .to receive(:generate)
+          .with(x_coordinate: position_output.x_coordinate, y_coordinate: position_output.y_coordinate)
+          .and_return(position_output)
         movement.move(position: position_input, orientation: orientation_input)
       end
     end

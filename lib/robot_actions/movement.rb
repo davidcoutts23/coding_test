@@ -1,24 +1,24 @@
 # frozen_string_literal: true
 
-require './lib/position'
+require './lib/factories/position_factory'
 
 class Movement
   def move(position:, orientation:)
     case orientation.cardinal_direction
     when 'NORTH'
-      Position.new(
+      PositionFactory.generate(
         x_coordinate: position.x_coordinate, y_coordinate: position.y_coordinate + 1
       )
     when 'SOUTH'
-      Position.new(
+      PositionFactory.generate(
         x_coordinate: position.x_coordinate, y_coordinate: position.y_coordinate - 1
       )
     when 'EAST'
-      Position.new(
+      PositionFactory.generate(
         x_coordinate: position.x_coordinate + 1, y_coordinate: position.y_coordinate
       )
     when 'WEST'
-      Position.new(
+      PositionFactory.generate(
         x_coordinate: position.x_coordinate - 1, y_coordinate: position.y_coordinate
       )
     end
